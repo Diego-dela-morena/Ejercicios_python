@@ -1,16 +1,16 @@
-print("Welcome to the Daily Expense Tracker!")
-print()
-print("Menu:")
-print("1. Add a new expense")
-print("2. View all expenses")
-print("3. Calculate total and average expense")
-print("4. Clear all expenses")
-print("5. Exit")
 gastos = []
 total = 0
 avrg = 0
 while True:
-    choice = int(input("Choice your option: "))
+    print("Welcome to the Daily Expense Tracker!")
+    print()
+    print("Menu:")
+    print("1. Add a new expense")
+    print("2. View all expenses")
+    print("3. Calculate total and average expense")
+    print("4. Clear all expenses")
+    print("5. Exit")
+    choice = int(input("Choose your option: "))
     if choice == 5:
         print("Exiting the Daily Expense Tracker. Goodbye!")
         break
@@ -31,9 +31,9 @@ while True:
         else:
             for i in gastos:
                 total += i
-            print(f"Total expense: {total}")
+            print(f"Total expense: {round(total,2)}")
             avrg = total / len(gastos)
-            print(f"Average expense: {avrg}")
+            print(f"Average expense: {round(avrg,2)}")
     elif choice == 4:
         gastos = []
         print("All expenses cleared.")

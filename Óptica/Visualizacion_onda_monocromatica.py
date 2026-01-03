@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+print("1- Ecuación simplificada E = A * sin(k * x)")
+print("2- Ecuación completa E = A * sin(k * x - omega * t + phi)")
+eleccion = int(input("Elija que tipo de ecuación desea usar (opción 1 o 2): "))
+if eleccion == 1:
+    final_x = float(input("Introduzca la longitud del eje x en micras: "))
+    landa = float(input("Introduzca el valor de la longitud de onda de la fuente en nm: "))
+    num_ondas = final_x / (landa / 1000)
+    puntos_necesarios = int(num_ondas * 20)
+    x = np.linspace(0, final_x, puntos_necesarios)
+    A = float(input("Introduzca el valor de la amplitud de la onda: "))
+    k = 2 * np.pi / (landa / 1000)
+    E = A * np.sin(k * x)
+    plt.plot(x,E)
+    plt.show()
+elif eleccion == 2:
+    final_x = float(input("Introduzca la longitud del eje x en micras: "))
+    landa = float(input("Introduzca el valor de la longitud de onda de la fuente en nm: "))
+    num_ondas = final_x / (landa / 1000)
+    puntos_necesarios = int(num_ondas * 20)
+    x = np.linspace(0, final_x, puntos_necesarios)
+    A = float(input("Introduzca el valor de la amplitud de la onda: "))
+    k = 2 * np.pi / (landa / 1000)
+    omega = float(input("Introduzca el valor de la frecuencia angular en rad/s (usa e15): "))
+    t = float(input("Introduzca el valor del tiempo transcurrido en segundos (usa e-15): "))
+    desfase = np.radians(float(input("Introduzca el desfase de la onda en grados: ")))
+    E = A * np.sin(k * x - omega * t + desfase)
+    plt.plot(x,E)
+    plt.show()
+else:
+    print(f"Tu elección '{eleccion}' no se encuentra entre las opciones del menú.")
